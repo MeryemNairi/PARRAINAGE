@@ -37,43 +37,38 @@ export default class Parrainage extends React.Component<IParrainageProps, {}> {
                 <th>Section</th>
                 <th>Poste</th>
                 <th>Montant prime brut</th>
-                <th>Echéance</th>
+                <th>Échéance</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>CRM</td>
+                <td rowSpan={2}>CRM</td>
                 <td>Conseiller Client Francophone</td>
                 <td>1500,00 MAD</td>
-                <td>Confirmation du filleul</td>
+                <td rowSpan={2}>Confirmation du filleul</td>
               </tr>
               <tr>
-                <td>CRM</td>
                 <td>Conseiller Client Anglophone</td>
                 <td>2000,00 MAD</td>
-                <td></td>
               </tr>
               <tr>
-                <td>Tech</td>
+                <td rowSpan={3}>Tech</td>
                 <td>Séniorité de 1 à 3 ans</td>
                 <td>4500,00 MAD</td>
-                <td>50% après 3 mois et 50% après 6 mois</td>
+                <td rowSpan={3}>50% après 3 mois <br />et 50% après 6 mois</td>
               </tr>
               <tr>
-                <td>Tech</td>
                 <td>Séniorité de 3 à 5 ans</td>
                 <td>6000,00 MAD</td>
-                <td></td>
               </tr>
               <tr>
-                <td>Tech</td>
                 <td>Séniorité de 6 ans et plus</td>
                 <td>7500,00 MAD</td>
-                <td></td>
               </tr>
             </tbody>
           </table>
         </div>
+
 
         <div className={styles.eligibilite}>
           <h2>Éligibilité:</h2>
