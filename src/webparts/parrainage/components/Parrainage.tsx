@@ -1,26 +1,29 @@
 import * as React from 'react';
-import styles from './Parrainage.module.scss'; // Importation du fichier de style SCSS
+import styles from './Parrainage.module.scss';
 import type { IParrainageProps } from './IParrainageProps';
 
 export default class Parrainage extends React.Component<IParrainageProps, {}> {
   public render(): React.ReactElement<IParrainageProps> {
     return (
       <div className={styles.container}>
-        <h1>Objectif:</h1>
+
+        <img src={require('../assets/906fbd7bcbc286555ab5c25c45044af0.png')} alt="Header" className={styles.header} />
+
+        <h2>1-Objectif:</h2>
         <p>Cette instruction détaille les étapes à suivre pour intégrer le parrainage comme Canal de Sourcing, de l'initiation à la conclusion du processus, conformément aux normes internes.</p>
 
         <div className={styles.context}>
-          <h2>Contexte:</h2>
+          <h2>2-Contexte:</h2>
           <p>Le parrainage constitue un moyen de sourcing qui permet l’augmentation du flux des candidatures reçues par le pôle recrutement. L’objectif de la démarche est d’aider l’entreprise à atteindre ses objectifs quantitatifs et qualitatifs en matière de recrutement dans le respect des délais fixés par les Opérations.</p>
         </div>
 
         <div className={styles.principle}>
-          <h2>Principe:</h2>
+          <h2>3-Principe:</h2>
           <p>Le parrainage est l’action par laquelle un employé de Cnexia recommande formellement (voire démarche du parrainage) au département People une personne de son entourage pour occuper un poste au sein de l’entreprise.</p>
         </div>
 
         <div className={styles.participants}>
-          <h2>Les intervenants:</h2>
+          <h2>4-Les intervenants:</h2>
           <ul>
             <li>Direction du site</li>
             <li>People and culture</li>
@@ -30,7 +33,8 @@ export default class Parrainage extends React.Component<IParrainageProps, {}> {
         </div>
 
         <div className={styles.modalites}>
-          <h2>Modalités d’attribution de la prime de parrainage</h2>
+          <h2>5-Modalités d’attribution de la prime de parrainage:</h2>
+          <h4>BARÈME et MODALITÉS PRIMES DE PARRAINAGE</h4>
           <table>
             <thead>
               <tr>
@@ -71,7 +75,7 @@ export default class Parrainage extends React.Component<IParrainageProps, {}> {
 
 
         <div className={styles.eligibilite}>
-          <h2>Éligibilité:</h2>
+          <h2>6-Éligibilité:</h2>
           <p>Tous les employés de Cnexia à part les rôles indiqués ci-dessous :</p>
           <h3>Parrainage Call center</h3>
           <ul>
@@ -90,11 +94,16 @@ export default class Parrainage extends React.Component<IParrainageProps, {}> {
         </div>
 
         <div className={styles.steps}>
-          <h2>Les étapes du processus de parrainage:</h2>
+          <h1>Les étapes du processus de parrainage:</h1>
           <ol>
             <li>
               <h3>La démarche à suivre par le parrain:</h3>
-              <p>Le parrain doit ouvrir un ticket sur l’outil Vivantio en suivant la démarche suivante : Adresser le CV du filleul à l’adresse parrainages@cnexia.com en indiquant :</p>
+              <p>
+                Le parrain doit ouvrir un ticket sur l’outil Vivantio en suivant la démarche suivante : Adresser le CV du filleul à l’adresse&nbsp;
+                <a href="mailto:parrainages@cnexia.com" className={styles.emailLink}>parrainages@cnexia.com</a>
+                &nbsp;en indiquant :
+              </p>
+
               <div className={styles.email}>
                 <p>Dans l’objet du mail : Cnexia-Parrainage + la ville (Rabat ou Fès)</p>
                 <p>Dans la corp du mail : ID boost + Nom et prénom du parrain + profil du filleul (francophone ou bilingue).</p>
@@ -123,4 +132,11 @@ export default class Parrainage extends React.Component<IParrainageProps, {}> {
       </div>
     );
   }
+
 }
+
+
+
+
+
+
