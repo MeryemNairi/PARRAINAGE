@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './Parrainage.module.scss';
 import type { IParrainageProps } from './IParrainageProps';
-import { sp } from "@pnp/sp/presets/all";
 
 export default class Parrainage extends React.Component<IParrainageProps, { imageUrl: string | null }> {
   constructor(props: IParrainageProps) {
@@ -17,9 +16,15 @@ export default class Parrainage extends React.Component<IParrainageProps, { imag
 
   loadImageFromSharePoint = async () => {
     try {
-      const file = await sp.web.getFileByServerRelativePath("/sites/CnexiaForEveryone/Assets/parrinage.png").getBuffer();
-      const imageUrl = URL.createObjectURL(new Blob([file]));
-      this.setState({ imageUrl });
+      const response = await fetch('https://cnexia.sharepoint.com/sites/CnexiaForEveryone/_api/web/GetFolderByServerRelativeUrl(\'/sites/CnexiaForEveryone/Assets\')/Files(\'parrinage.png\')/$value');
+      
+      if (response.ok) {
+        const blob = await response.blob();
+        const imageUrl = URL.createObjectURL(blob);
+        this.setState({ imageUrl });
+      } else {
+        console.error('Failed to fetch image from SharePoint:', response.statusText);
+      }
     } catch (error) {
       console.error('Error fetching image from SharePoint:', error);
     }
