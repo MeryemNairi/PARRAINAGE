@@ -2,12 +2,42 @@ import * as React from 'react';
 import styles from './Parrainage.module.scss';
 import type { IParrainageProps } from './IParrainageProps';
 
-export default class Parrainage extends React.Component<IParrainageProps, {}> {
+export default class Parrainage extends React.Component<IParrainageProps, { imageUrl: string | null }> {
+  constructor(props: IParrainageProps) {
+    super(props);
+    this.state = {
+      imageUrl: null,
+    };
+  }
+
+  componentDidMount() {
+    this.loadImageFromSharePoint();
+  }
+
+  loadImageFromSharePoint = async () => {
+    try {
+      const response = await fetch('https://cnexia.sharepoint.com/sites/CnexiaForEveryone/_api/web/GetFolderByServerRelativeUrl(\'/sites/CnexiaForEveryone/Assets\')/Files(\'parrinage.png\')/$value');
+      
+      if (response.ok) {
+        const blob = await response.blob();
+        const imageUrl = URL.createObjectURL(blob);
+        this.setState({ imageUrl });
+      } else {
+        console.error('Failed to fetch image from SharePoint:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching image from SharePoint:', error);
+    }
+  };
+
   public render(): React.ReactElement<IParrainageProps> {
+    const { imageUrl } = this.state;
+
     return (
       <div className={styles.container}>
-
-        <img src={require('../assets/906fbd7bcbc286555ab5c25c45044af0.png')} alt="Header" className={styles.header} />
+        {imageUrl && (
+          <img src={imageUrl} alt="Header" className={styles.header} />
+        )}
 
         <h2>1-Objectif:</h2>
         <p>Cette instruction détaille les étapes à suivre pour intégrer le parrainage comme Canal de Sourcing, de l'initiation à la conclusion du processus, conformément aux normes internes.</p>
@@ -132,11 +162,4 @@ export default class Parrainage extends React.Component<IParrainageProps, {}> {
       </div>
     );
   }
-
 }
-
-
-
-
-
-
